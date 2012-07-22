@@ -1,0 +1,196 @@
+# World Word Clock - PO file for de-DE
+# Copyright (C) Andrew Baxter 1997 andy@highfellow.org.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xxx\n"
+"Report-Msgid-Bugs-To: andy@highfellow.org\n"
+"POT-Creation-Date: 2012-07-06\n"
+"PO-Revision-Date: \n"
+"Last-Translator: My NAME<me@mydomain.com>\n"
+"Language-Team: TEAM <team@TTEAM.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+# Units: zero
+msgctxt "units"
+msgid "0"
+msgstr "null"
+
+# Units: one
+msgctxt "units"
+msgid "1"
+msgstr "ein"
+
+
+# Units: two
+msgctxt "units"
+msgid "2"
+msgstr "zwei"
+
+# Units: three
+msgctxt "units"
+msgid "3"
+msgstr "drei"
+
+# Units: four
+msgctxt "units"
+msgid "4"
+msgstr "vier"
+
+# Units: five
+msgctxt "units"
+msgid "5"
+msgstr "fünf"
+
+# Units: six
+msgctxt "units"
+msgid "6"
+msgstr "sechs"
+
+# Units: seven
+msgctxt "units"
+msgid "7"
+msgstr "sieben"
+
+# Units: eight
+msgctxt "units"
+msgid "8"
+msgstr "acht"
+
+# Units: nine
+msgctxt "units"
+msgid "9"
+msgstr "neun"
+
+# Tens: ten
+msgctxt "tens"
+msgid "1"
+msgstr "zehn"
+
+# Tens: twenty 
+msgctxt "tens"
+msgid "2"
+msgstr "zwanzig"
+
+# Tens: thirty
+msgctxt "tens"
+msgid "3"
+msgstr "dreißig"
+
+# Tens: fourty
+msgctxt "tens"
+msgid "4"
+msgstr "fierzig"
+
+# Tens: fifty
+msgctxt "tens"
+msgid "5"
+msgstr "fünfzig"
+
+# Rule for constructing tens.
+msgid "tens-rule"
+msgstr "%(units)sund%(tens)s" 
+
+# Tens exceptions: eleven
+msgctxt "tens-exceptions"
+msgid "11"
+msgstr "elf"
+
+# Tens exceptions: twelve
+msgctxt "tens-exceptions"
+msgid "12"
+msgstr "zwölf"
+
+# Tens exceptions: thirteen
+msgctxt "tens-exceptions"
+msgid "13"
+msgstr "dreizehn"
+
+# Tens exceptions: fourteen
+msgctxt "tens-exceptions"
+msgid "14"
+msgstr "vierzehn"
+
+# Tens exceptions: fifteen
+msgctxt "tens-exceptions"
+msgid "15"
+msgstr "fünfzehn"
+
+# Tens exceptions: sixteen
+msgctxt "tens-exceptions"
+msgid "16"
+msgstr "sechzehn"
+
+# Tens exceptions: seventeen
+msgctxt "tens-exceptions"
+msgid "17"
+msgstr "siebzehn"
+
+# Tens exceptions: eighteen
+msgctxt "tens-exceptions"
+msgid "18"
+msgstr "achtzehn"
+
+# Tens exceptions: nineteen
+msgctxt "tens-exceptions"
+msgid "19"
+msgstr "neunzehn"
+
+# Rule for minutes past the hour
+msgid "minutes-past-rule"
+msgstr "%(minutes)s nach %(thisHour)s"
+
+# Rule for minutes to the hour
+msgid "minutes-to-rule"
+msgstr "%(minutesTo)s vor %(nextHour)s"
+
+# Exceptions to the minutes to/past rules: O'Clock
+msgctxt "minutes-exceptions"
+msgid "0"
+msgstr "%(thisHour) Uhr"
+
+# Exceptions to the minutes to/past rules: Quarter Past
+msgctxt "minutes-exceptions"
+msgid "15"
+msgstr "Viertel nach %(thisHour)s"
+
+# Exceptions to the minutes to/past rules: Half Past
+msgctxt "minutes-exceptions"
+msgid "30"
+msgstr "halb %(nextHour)s"
+
+# Exceptions to the minutes to/past rules:
+msgctxt "minutes-exceptions"
+msgid "45"
+msgstr "Viertel vor %(nextHour)s"
+
+# Rule for writing minutes
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "%(minutes)s Minute"
+msgstr[1] "%(minutes)s Minuten"
+
+# Rule for writing seconds
+msgid "second"
+msgid_plural "seconds"
+msgstr[0] "%(seconds)s Sekunde"
+msgstr[1] "%(seconds)s Sekunden"
+
+# Rule for the full time in hours minutes and seconds
+msgid "full-time"
+msgstr "%(hoursMins)s und %(seconds)s"
+
+# Rule for the precise time at the start of a minute
+msgid "precise-time"
+msgstr "genau %(hoursMins)s"
+
+# Rule for noon
+msgid "noon"
+msgstr "Mittag"
+
+# Rule for midnight
+msgid "midnight"
+msgstr "Miternacht"

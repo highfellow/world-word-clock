@@ -1,0 +1,26 @@
+{
+  "author": "Andrew Baxter <andy@highfellow.org> (http://highfellow.org)",
+  "name": "world-word-clock",,
+  "description": "A translatable word clock using node-gettext",
+  "version": "0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/highfellow/world-word-clock.git"
+  },
+  "engines": {
+    "node": "~0.6.10"
+  },
+  "dependencies": {
+    "browserify": "~1.13.5",
+    "http-browserify": "~0.1.1",
+    "traveller": "https://github.com/highfellow/node-traveller.git",
+    "coffee-script": "~1.2.0"
+  },
+  "keywords": ["clock","translatable","gettext""],
+  "scripts": {
+    "postinstall": "node_modules/.bin/browserify word-clock.coffee -o browser.js"
+  },
+  "devDependencies": {
+  },
+  "optionalDependencies": {}
+}
