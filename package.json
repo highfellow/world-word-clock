@@ -16,7 +16,7 @@
     "traveller": "https://github.com/highfellow/node-traveller.git",
     "coffee-script": "~1.2.0"
   },
-  "keywords": ["clock","translatable","gettext""],
+  "keywords": ["clock","translatable","gettext"],
   "scripts": {
     "postinstall": "node_modules/.bin/browserify word-clock.coffee -o browser.js"
   },
