@@ -1,6 +1,6 @@
 {
   "author": "Andrew Baxter <andy@highfellow.org> (http://highfellow.org)",
-  "name": "world-word-clock",,
+  "name": "world-word-clock",
   "description": "A translatable word clock using node-gettext",
   "version": "0.1",
   "repository": {
