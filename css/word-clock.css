@@ -1,25 +1,27 @@
-div.page {
+.page, body, html {
   width:100%;
   height:100%;
+  margin:0px;
+  padding:0px;
 }
 
-div.mainwindow {
+.mainwindow {
   height: 95%;
   width: 100%;
 }
 
-div.bottombar {
+.bottombar {
   height: 5%;
   width: 100%;
 }
 
-div.bottombar div {
+.bottombar div {
   vertical-align: bottom;
   height: 100%;
   float: right;
 }
 
-p.word {
+.word {
   position: absolute;
   font-size: 22pt;
 }
