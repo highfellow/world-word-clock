@@ -104,33 +104,33 @@ class DomWait
     @readyCount = 0 # number of words completed
     @wordCount = 0 # number of words in list
     @allAdded = no
-    console.log "domWait init", @newTime
+    #console.log "domWait init", @newTime
   listFull: ->
-    console.log "domWait.listFull"
+    #console.log "domWait.listFull"
     @allAdded = yes
   addWord: ->
     # Start building a new word object
-    console.log 'domWait.addWord', @wordCount, @readyCount
+    #console.log 'domWait.addWord', @wordCount, @readyCount
     @wordCount++
     if @allAdded and @wordCount is @readyCount
-      console.log "all words ready"
+      #console.log "all words ready"
       @renderWait()
   wordReady: ->
     # word object template ready.
-    console.log 'domWait.wordReady', @wordCount, @readyCount
+    #console.log 'domWait.wordReady', @wordCount, @readyCount
     @readyCount++
     if @allAdded and @wordCount is @readyCount
-      console.log "all words ready"
+      #console.log "all words ready"
       @renderWait()
   renderWait: =>
-    console.log "domWait.renderWait"
+    #console.log "domWait.renderWait"
     allRendered = yes
     for word in wordLists.new
       if word.dt._jquery.width() is 0
         allRendered = no
         break
     if allRendered
-      #console.log "All words rendered"
+      ##console.log "All words rendered"
       effects @newTime # ready to run the jquery effects.
     else
       setTimeout @renderWait, 5
@@ -138,7 +138,7 @@ class DomWait
 class Word
   constructor: (@text) ->
     # make a new dt element and set state to new.
-    #console.log @text
+    ##console.log @text
     text=@text
     @state = wordStates.new
     @ready = no
@@ -147,7 +147,7 @@ class Word
     @dt.ready(@setReady)
   setReady: =>
     @ready = yes
-    #console.log "word.setReady" , this
+    ##console.log "word.setReady" , this
     domWait.wordReady()
   mark: (@state) ->
 
@@ -199,14 +199,14 @@ render = (period) ->
   for word in wordLists.old
     word.dt._jquery.stop true, true
   # get window size
-  #console.log "mainWindow", mainWindow
+  ##console.log "mainWindow", mainWindow
   winHeight = parseInt mainWindow._jquery.height()
   winWidth = parseInt mainWindow._jquery.width()
   # work out the horizontal positions of each element
   hPos = conf.spacing
   for word in wordLists.new
     word.newLeft = hPos
-    #console.log word.text, 'width:', word.dt._jquery.width()
+    ##console.log word.text, 'width:', word.dt._jquery.width()
     hPos += parseInt(word.dt._jquery.width()) + conf.spacing
   # get the height of a word and the width of the whole string
   wordHeight = parseInt wordLists.new[0].dt._jquery.css 'height'
@@ -233,13 +233,13 @@ render = (period) ->
 count = 0
 tick = ->
   count++
-  console.log "tick"
+  #console.log "tick"
   # get current time.
   curDate = new Date
   timeMs = curDate.getTime()
   # remove old words
   for word in wordLists.remove
-    console.log "removing:", word.text
+    #console.log "removing:", word.text
     word.dt._jquery.remove()
   # work out exact time of next rollover (+ 1ms)
   delay = conf.step - (timeMs % conf.step) + 1
@@ -251,12 +251,12 @@ tick = ->
 
 # run jquery effects. Called once the dom is ready for all the new words.
 effects = (newTime)->
-  console.log "running effects"
+  #console.log "running effects"
   date = new Date # recalculate current time.
   delay = newTime - date.getTime()
   # do the jquery effects
   render delay
-  #console.log "wordLists", wordLists
+  ##console.log "wordLists", wordLists
   wordLists.old = wordLists.new
   # find ms to wait until next change.
   # (calculate the delay again in case the earlier bits took a while)
@@ -265,6 +265,15 @@ effects = (newTime)->
   delay = newTime - date.getTime()
   setTimeout tick, delay + conf.pause# if count < 24
 
+options = []
+
+option = (tag, value, text) ->
+  opt = tag.$option
+    value: value
+  , -> @text (text)
+  options.push opt
+
+window.selectElt = selectElt = null
 run = ->
   # finish setting up translation.
   tr.setLocale locale
@@ -274,30 +283,36 @@ run = ->
       mainWindow = @$div(class:'mainwindow').ready(tick)
       @$div class:'bottombar', ->
         @$div ->
-         selectElt = @$select ->
-           @$option value:'en-GB', -> @text('English')
-           @$option value:'de-DE', -> @text('Deutsch')
+          selectElt = @$select id: "setLang", ->
+            option this, 'en-GB', "English"
+            option this, 'de-DE', "Deutsch"
+          selectElt.ready(selectWait)
   tpl.ready ->
     for el in tpl.jquery
       $('body').append el
 
+selectWait = ->
+  # select element is ready.
+  selectElt._jquery.on "change", ->
+    newLocale = selectElt._jquery[0].value
+    #console.log "lang changed", newLocale
+    tr.loadLocale newLocale, ->
+      localeChanged newLocale
+
+localeChanged = (newLocale)->
+  #console.log "lang set", newLocale
+  tr.setLocale newLocale
+
 # loader function to pass to traveller for loading locale files.
 localeLoader = (path, callback)->
-  http.get 'path' : path, (result)->
+  http.get path: path, (result)->
     result.on 'data', (buf) ->
       callback buf
 
-#console.log "template ready"
-
-# set up translation and start the main program
-# first find if there's a locale in the URL
 docURL=document.URL
 urlData=url.parse(docURL)
 pathbits=urlData.pathname.split "/"
 docPath=pathbits[0...pathbits.length-1].join "/"
-if /\?.*?$/.test(docURL)
-  locale=docURL.replace /^.*\?locale=/, ""
+# set up translation and start the main program
 tr.init docPath + '/locales', localeLoader, 'json'
-tr.loadLocale locale, run
-
-
+tr.loadLocale 'en-GB', run
