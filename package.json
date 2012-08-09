@@ -18,7 +18,7 @@
   },
   "keywords": ["clock","translatable","gettext"],
   "scripts": {
-    "postinstall": "node_modules/.bin/browserify word-clock.coffee -o browser.js"
+    "postinstall": "./build.sh"
   },
   "devDependencies": {
   },
