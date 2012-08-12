@@ -5,7 +5,6 @@ tr=require 'traveller'
 http=require 'http-browserify'
 url=require 'url'
 { Template, jqueryify } = window.dynamictemplate
-{ floor, random } = Math
 
 # declare globals
 locale="en-GB"
